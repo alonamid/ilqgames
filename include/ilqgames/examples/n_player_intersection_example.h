@@ -67,28 +67,6 @@ class NPlayerIntersectionExample : public TopDownRenderableProblem {
   std::vector<float> Ys(const VectorXf& x) const;
   std::vector<float> Thetas(const VectorXf& x) const;
 
-
- private:
-  
-  static float kPProximityCostWeight [N];
-  static float kPGoalX[N];  // m
-  static float kPGoalY[N];   // m
-  static float kPMaxV[N];   // m/s
-  static float kPNominalV[N];  // m/s
-  static float kPInitialX[N];  // m
-  static float kPInitialY[N];   // m
-  static float kPInitialHeading[N];      // rad
-  static float kPInitialSpeed[N];  // m/s
-  static Dimension kPXIdx[N];
-  static Dimension kPYIdx[N];
-  static Dimension kPHeadingIdx[N];
-  static Dimension kPPhiIdx[N];
-  static Dimension kPVIdx[N];
-  static Dimension kPAIdx[N];
-  static Dimension kPOmegaIdx[N];
-  static Dimension kPJerkIdx[N];
-
-
 };  // class NPlayerIntersectionExample
 
 }  // namespace ilqgames

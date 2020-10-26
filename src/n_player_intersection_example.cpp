@@ -113,6 +113,26 @@ namespace ilqgames {
   // Lane width.
   static constexpr float kLaneHalfWidth = 2.5;  // m
 
+  // Player consts
+  static float kPProximityCostWeight [N];
+  static float kPGoalX[N];  // m
+  static float kPGoalY[N];   // m
+  static float kPMaxV[N];   // m/s
+  static float kPNominalV[N];  // m/s
+  static float kPInitialX[N];  // m
+  static float kPInitialY[N];   // m
+  static float kPInitialHeading[N];      // rad
+  static float kPInitialSpeed[N];  // m/s
+  static Dimension kPXIdx[N];
+  static Dimension kPYIdx[N];
+  static Dimension kPHeadingIdx[N];
+  static Dimension kPPhiIdx[N];
+  static Dimension kPVIdx[N];
+  static Dimension kPAIdx[N];
+  static Dimension kPOmegaIdx[N];
+  static Dimension kPJerkIdx[N];
+
+
 NPlayerIntersectionExample::NPlayerIntersectionExample() {
 
   //static float kPProximityCostWeight [N];
