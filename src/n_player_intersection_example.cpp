@@ -234,15 +234,16 @@ void NPlayerIntersectionExample::ConstructPlayerCosts() {
   for (auto i = 0; i < N; i++)
   {
     //p_lane_cost[i]
-    player_costs_[i].AddStateCost(std::shared_ptr<QuadraticPolyline2Cost>(kLaneCostWeight, lane1, {kPXIdx[i], kPYIdx[i]}, "LaneCenter"));
+    std::pair<Dimension, Dimension> position_idxs(kPXIdx[i], kPYIdx[i]);
+    player_costs_[i].AddStateCost(std::make_shared<QuadraticPolyline2Cost>(kLaneCostWeight, lane1, position_idxs, "LaneCenter"));
 
     //p_lane_r_constraint[i]
-    //player_costs_[i].AddStateConstraint(std::shared_ptr<Polyline2SignedDistanceConstraint>(lane3, {kPXIdx[i], kPYIdx[i]},
+    //player_costs_[i].AddStateConstraint(std::make_shared<Polyline2SignedDistanceConstraint>(lane3, position_idxs,
     //                                                                                kLaneHalfWidth, !kOrientedRight,
     //                                                                                "LaneRightBoundary"));
 
     //p_lane_l_constraint[i]
-    //player_costs_[i].AddStateConstraint(std::shared_ptr<Polyline2SignedDistanceConstraint>(lane3, {kPXIdx[i], kPYIdx[i]},
+    //player_costs_[i].AddStateConstraint(std::shared_ptr<Polyline2SignedDistanceConstraint>(lane3, position_idxs,
     //                                                                                -kLaneHalfWidth, kOrientedRight,
     //                                                                                "LaneLeftBoundary"));
 
@@ -275,7 +276,9 @@ void NPlayerIntersectionExample::ConstructPlayerCosts() {
   {
     for (auto j = 0; j < N; j++)
     {
-      player_costs_[i].AddStateConstraint(std::shared_ptr<ProximityConstraint>({kPXIdx[i], kPYIdx[i]}, {kPXIdx[j], kPYIdx[j]},
+      std::pair<Dimension, Dimension> position_idxs_i(kPXIdx[i], kPYIdx[i]);
+      std::pair<Dimension, Dimension> position_idxs_j(kPXIdx[j], kPYIdx[j]);
+      player_costs_[i].AddStateConstraint(std::make_shared<ProximityConstraint>(position_idxs_i, position_idxs_j,
                                                                        kMinProximity, kConstraintOrientedInside,
                                                                        "ProximityConstraint"));
     }
@@ -288,7 +291,7 @@ inline std::vector<float> NPlayerIntersectionExample::Xs(
       std::vector<float> ret_val; 
       for (auto i = 0; i < N; i++)
       {
-        ret_val.push_back(x(kPXIdx[i]))
+        ret_val.push_back(x(kPXIdx[i]));
       }
       return ret_val;
 }
@@ -298,7 +301,7 @@ inline std::vector<float> NPlayerIntersectionExample::Ys(
       std::vector<float> ret_val; 
       for (auto i = 0; i < N; i++)
       {
-        ret_val.push_back(x(kPYIdx[i]))
+        ret_val.push_back(x(kPYIdx[i]));
       }
       return ret_val;
 }
@@ -308,7 +311,7 @@ inline std::vector<float> NPlayerIntersectionExample::Thetas(
       std::vector<float> ret_val; 
       for (auto i = 0; i < N; i++)
       {
-        ret_val.push_back(x(kPHeadingIdx[i]))
+        ret_val.push_back(x(kPHeadingIdx[i]));
       }
       return ret_val;
 }
