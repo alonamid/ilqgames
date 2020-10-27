@@ -47,7 +47,7 @@
 #include <ilqgames/solver/solver_params.h>
 #include <ilqgames/solver/top_down_renderable_problem.h>
 
-#define N 100
+#define N 10
 
 namespace ilqgames {
 

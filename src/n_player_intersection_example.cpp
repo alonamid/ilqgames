@@ -300,7 +300,7 @@ void NPlayerIntersectionExample::ConstructPlayerCosts() {
       std::pair<Dimension, Dimension> position_idxs_j(kPXIdx[j], kPYIdx[j]);
       player_costs_[i].AddStateConstraint(std::make_shared<ProximityConstraint>(position_idxs_i, position_idxs_j,
                                                                        kMinProximity, kConstraintOrientedInside,
-                                                                       "ProximityConstraint"));
+                                                                       "ProximityConstraint" + std::to_string(i) + "x" + std::to_string(j)));
     }
   }
 
