@@ -37,6 +37,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include ${imgui_SOURCE_DIR}/include)
 # Collect source files and build the ilqgames object.
 file(GLOB_RECURSE ilqgames_srcs ${CMAKE_SOURCE_DIR}/src/*.cpp)
 add_library(ilqgames ${ilqgames_srcs})
+target_link_libraries (ilqgames blas)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/ilqgames DESTINATION include/ilqgames)
 install(TARGETS ilqgames
